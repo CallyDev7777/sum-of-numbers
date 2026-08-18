@@ -5,12 +5,13 @@
 def Main():
     print("Welcome to the sum of numbers function!")
     print("Current command list:\n" \
-    " quit = forces the loop to end and return the result\n" \
+    " quit = forces the loop to end and return the result. This also creates a text file called 'numbers.txt' which relays the same information \n" \
     " undo = removes the last number entered and returns it for user validation\n" \
     " list = prints all current numbers held within the list\n")
     numb_list = []
     askInput(numb_list)
     print("Total number sum is... ", sum_of_inputs(numb_list), " with a valid counter of ...", len(numb_list) , "!")
+    print("Number list and sum of list has been generated as a text file, look for 'numbers.txt' for the written result!")
 
     
 
@@ -20,7 +21,10 @@ def askInput(numb_list):
         print("---------------------------------")
         x = input("Please enter a number: ")
         if x.lower() == "quit":
-            break
+            with open("numbers.txt", "w") as f:
+                f.write("Numbers: " + str(numb_list) + "\n")
+                f.write("Total: " + str(sum_of_inputs(numb_list)) + "\n")
+                break
         elif x.lower() == "undo":
             if numb_list:
                 removed = numb_list.pop()
