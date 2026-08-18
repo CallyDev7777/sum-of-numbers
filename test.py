@@ -4,8 +4,10 @@
 
 def Main():
     print("Welcome to the sum of numbers function!")
-    print("Please enter as many numbers as you want, when you want the function to stop, please say 'quit'!")
-    print("If you would like to undo the previous input, please say 'undo'!")
+    print("Current command list:\n" \
+    " quit = forces the loop to end and return the result\n" \
+    " undo = removes the last number entered and returns it for user validation\n" \
+    " list = prints all current numbers held within the list\n")
     numb_list = []
     askInput(numb_list)
     print("Total number sum is... ", sum_of_inputs(numb_list), " with a valid counter of ...", len(numb_list) , "!")
@@ -25,6 +27,11 @@ def askInput(numb_list):
                 print(removed, "has been removed from the list!")
             else:
                 print("Nothing to undo!")
+        elif x.lower() == "list":
+            if numb_list:
+                print(numb_list)
+            else:
+                print("list of numbers is empty! Please input at least one integer before using list")
         elif not x.isdigit():
             print("Please enter integers only!")
         else:
